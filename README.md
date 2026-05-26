@@ -7,18 +7,18 @@
 
 </div>
 
-This work presents **R³**, a feed-forward model that reconstructs camera poses and dense geometry from arbitrarily long video streams via *relative-pose regression*. Instead of regressing every camera in one global frame, R³ predicts confidence-weighted pairwise relative poses on top of a frozen Depth Anything 3 backbone, then assembles a consistent global trajectory downstream.
+This work presents **R³**, a feed-forward model that reconstructs camera poses and dense geometry from arbitrarily long video streams via *relative-pose regression*. Instead of regressing every camera in one global frame, R³ predicts confidence-weighted pairwise relative poses on top of a Depth Anything 3 backbone, then assembles a consistent global trajectory downstream.
 
 Two ideas keep the modeling minimal:
 
-- A **lightweight pairwise pose MLP** sits on a frozen DA3 backbone — no recurrent state, no TTT modules, no extra transformer.
+- A **lightweight pairwise pose MLP** sits on a DA3 backbone — no recurrent state, no TTT modules, no extra transformer.
 - A **single learned confidence per edge** (decoupled into rotation and translation) drives loss weighting, pose aggregation, and keyframe-bank management.
 
 With **372M parameters** (≈⅓ of recent 1B-class models), R³ matches or surpasses state-of-the-art streaming methods on pose estimation and dense reconstruction, runs at **20+ FPS**, and scales to **thousands of frames** under a bounded memory budget.
 
 ## 📰 News
 
-- **2026-05-18:** Inference-only public release with `r3` and `r3_long` checkpoints.
+- **2026-05-26:** Inference-only public release with `r3` and `r3_long` checkpoints.
 
 ## 🗂️ Release TODO
 
