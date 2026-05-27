@@ -3,7 +3,7 @@
 
 <a href='https://kevinxu02.github.io/r3-site/'><img src='https://img.shields.io/badge/Project_Page-R3-green' alt='Project Page'></a>
 <a href='https://huggingface.co/KevinXu02/R3'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Checkpoints-blue' alt='Checkpoints'></a>
-<img src='https://img.shields.io/badge/Paper-coming%20soon-lightgrey' alt='Paper'>
+<a href='https://arxiv.org/abs/2605.26519'><img src='https://img.shields.io/badge/arXiv-2605.26519-b31b1b' alt='arXiv'></a>
 
 </div>
 
