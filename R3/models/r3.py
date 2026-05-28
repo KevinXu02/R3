@@ -283,8 +283,18 @@ class R3(R3OnlineInferenceMixin, R3OutputMixin, R3SetupMixin, nn.Module):
         if img_max <= 1.5 and img_min >= -1.05:
             if img_min < -0.05:
                 # Range is [-1, 1] → rescale to [0, 1] first.
-                images = (images + 1.0) / 2.0
-            images = NORMALIZE(images)
+                # In-place to avoid a 2× peak-VRAM spike on long input
+                # sequences: the out-of-place form allocates a same-shape
+                # copy before freeing the operand. Long sequences (1000+
+                # frames) on 8 GB cards OOM here otherwise.
+                images = images.add_(1.0).div_(2.0)
+            # Chunk NORMALIZE along the sequence (S) axis for the same
+            # reason — torchvision's Normalize allocates a same-shape
+            # output. Per-chunk peak is bounded by _S_CHUNK frames.
+            _S_CHUNK = 32
+            for _s in range(0, images.shape[1], _S_CHUNK):
+                _e = min(_s + _S_CHUNK, images.shape[1])
+                images[:, _s:_e] = NORMALIZE(images[:, _s:_e])
         # else: assume input is already ImageNet-normalized; pass through.
 
         if self._should_use_online_mode(mode):
