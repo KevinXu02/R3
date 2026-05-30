@@ -100,11 +100,14 @@ We thank the authors for their excellent work.
 If R³ is useful in your research or projects, please cite:
 
 ```bibtex
-@article{r3_2026,
-  title  = {R^3: 3D Reconstruction via Relative Regression},
-  author = {Anonymous},
-  year   = {2026},
-  note   = {Paper coming soon}
+@misc{xu2026r33dreconstructionrelative,
+      title={$R^3$: 3D Reconstruction via Relative Regression}, 
+      author={Congrong Xu and Huachen Gao and Xingyu Chen and Yuliang Xiu and Jun Gao and Anpei Chen},
+      year={2026},
+      eprint={2605.26519},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2605.26519}, 
 }
 ```
 
